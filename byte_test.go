@@ -103,7 +103,7 @@ func Example() {
 	// 10000 bytes is: 10 KB and 0.01 MB
 }
 
-func ExampleByteFormat() {
+func ExampleByte_Format() {
 	b := Byte(100000)
 	fmt.Println(b.Format("b"))
 	fmt.Println(b.Format("kb"))

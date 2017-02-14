@@ -94,7 +94,7 @@ func (b Byte) Exbibytes() float64 {
 // Format returns a textual representation of the Byte value formatted
 // according to layout, which defines the format by specifying an abbreviation.
 // Abbreviations are case-insensitive.
-// 
+//
 // Valid abbreviations are as follows:
 //	B (Bytes)
 //	KB (Kilobytes)

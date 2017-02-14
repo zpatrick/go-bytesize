@@ -29,6 +29,13 @@ func main() {
 }
 ```
 
+Output:
+```
+10000 bytes is: 10 KB and 0.01 MB
+2 Terabytes is 1862.645149230957 Gibibytes
+1e+06 bytes is 1MB
+```
+
 ## License
 This work is published under the MIT license.
 Please see the `LICENSE` file for details.

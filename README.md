@@ -20,6 +20,9 @@ import (
 func main() {
         b := byte.Byte(10000)
         fmt.Printf("%f bytes is: %f KB, and %f MB\n", b, b.Kilobytes(), b.Megabytes())
+
+        b = byte.TB*2
+        fmt.Printf("2 Terabytes is %f Gibibytes\n", b.Gibibytes())
 }
 ```
 

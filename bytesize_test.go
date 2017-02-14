@@ -1,4 +1,4 @@
-package byte
+package bytesize
 
 import (
 	"fmt"
@@ -13,65 +13,65 @@ func init() {
 	rand.Seed(time.Now().Unix())
 }
 
-func TestByteConversions(t *testing.T) {
+func TestBytesizeConversions(t *testing.T) {
 	for i := 0; i < 1000; i++ {
-		b := Byte(rand.Int63n(MAX_INT64))
+		b := Bytesize(rand.Int63n(MAX_INT64))
 		t.Logf("Testing %f", b)
 
 		if r, e := b.Kilobytes(), float64(b/KB); r != e {
-			t.Errorf("Kilobytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Kilobytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Megabytes(), float64(b/MB); r != e {
-			t.Errorf("Megabytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Megabytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Gigabytes(), float64(b/GB); r != e {
-			t.Errorf("Gigabytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Gigabytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Terabytes(), float64(b/TB); r != e {
-			t.Errorf("Terabytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Terabytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Petabytes(), float64(b/PB); r != e {
-			t.Errorf("Petabytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Petabytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Exabytes(), float64(b/EB); r != e {
-			t.Errorf("Exabytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Exabytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Kibibytes(), float64(b/KiB); r != e {
-			t.Errorf("Kibibytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Kibibytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Mebibytes(), float64(b/MiB); r != e {
-			t.Errorf("Mebibytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Mebibytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Gibibytes(), float64(b/GiB); r != e {
-			t.Errorf("Gibibytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Gibibytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Tebibytes(), float64(b/TiB); r != e {
-			t.Errorf("Tebibytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Tebibytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Pebibytes(), float64(b/PiB); r != e {
-			t.Errorf("Pebibytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Pebibytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Exbibytes(), float64(b/EiB); r != e {
-			t.Errorf("Exbibytes %f: got %f, expected %f", b, r, e)
+			t.Errorf("Exbibytes %f: result %f, expected %f", b, r, e)
 		}
 	}
 }
 
-func TestByteConstants(t *testing.T) {
-	constants := map[Byte]struct {
+func TestBytesizeConstants(t *testing.T) {
+	constants := map[Bytesize]struct {
 		Abbreviation string
-		Expected     Byte
+		Expected     Bytesize
 	}{
 		B:   {"B", 1},
 		KB:  {"KB", 1000},
@@ -88,23 +88,23 @@ func TestByteConstants(t *testing.T) {
 		EiB: {"EiB", 1152921504606846976},
 	}
 
-	for c, s := range constants {
-		if c != s.Expected {
-			t.Errorf("%s: got %f, expected %f", s.Abbreviation, c, s.Expected)
+	for b, s := range constants {
+		if b != s.Expected {
+			t.Errorf("%s: result %f, expected %f", s.Abbreviation, b, s.Expected)
 		}
 	}
 }
 
 func Example() {
-	b := Byte(10000)
+	b := Bytesize(10000)
 	fmt.Printf("%g bytes is: %g KB and %g MB\n", b, b.Kilobytes(), b.Megabytes())
 
 	// Output:
 	// 10000 bytes is: 10 KB and 0.01 MB
 }
 
-func ExampleByte_Format() {
-	b := Byte(100000)
+func ExampleBytesize_Format() {
+	b := Bytesize(100000)
 	fmt.Println(b.Format("b"))
 	fmt.Println(b.Format("kb"))
 	fmt.Println(b.Format("gb"))

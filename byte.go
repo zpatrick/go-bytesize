@@ -1,5 +1,10 @@
 package byte
 
+import (
+	"fmt"
+	"strings"
+)
+
 // A Byte represents a single byte as a float64
 type Byte float64
 
@@ -84,4 +89,56 @@ func (b Byte) Pebibytes() float64 {
 // Exbibytes returns the number of Exbibytes (EiB) in b
 func (b Byte) Exbibytes() float64 {
 	return float64(b / EiB)
+}
+
+// Format returns a textual representation of the Byte value formatted
+// according to layout, which defines the format by specifying an abbreviation.
+//
+// Valid abbreviations are as follows:
+//	B (Bytes)
+//	KB (Kilobytes)
+//	MB (Megabytes)
+//	GB (Gigabytes)
+//	TB (Terabytes)
+//	PB (Petabytes)
+//	EB (Exabytes)
+//      KiB (Kibibytes)
+//      MiB (Mebibytes)
+//	GiB (Gibibytes)
+//	TiB (Tebibtyes)
+//	PiB (Pebibytes)
+//	EiB (Exbibyte)
+//
+// Abbreviations are case-insensitive.
+func (b Byte) Format(layout string) string {
+	switch layout := strings.ToLower(layout); layout {
+	case "b":
+		return fmt.Sprintf("%gB", b.Bytes())
+	case "kb":
+		return fmt.Sprintf("%gKB", b.Kilobytes())
+	case "mb":
+		return fmt.Sprintf("%gMB", b.Megabytes())
+	case "gb":
+		return fmt.Sprintf("%gGB", b.Gigabytes())
+	case "tb":
+		return fmt.Sprintf("%gTB", b.Terabytes())
+	case "pb":
+		return fmt.Sprintf("%gPB", b.Petabytes())
+	case "eb":
+		return fmt.Sprintf("%gEB", b.Exabytes())
+	case "kib":
+		return fmt.Sprintf("%gKiB", b.Kibibytes())
+	case "mib":
+		return fmt.Sprintf("%gMiB", b.Mebibytes())
+	case "gib":
+		return fmt.Sprintf("%gGiB", b.Gibibytes())
+	case "tib":
+		return fmt.Sprintf("%gTiB", b.Tebibytes())
+	case "pib":
+		return fmt.Sprintf("%gPiB", b.Pebibytes())
+	case "eib":
+		return fmt.Sprintf("%gEiB", b.Exbibytes())
+	default:
+		return fmt.Sprintf("%%!%s(byte=%f)", layout, b)
+	}
 }

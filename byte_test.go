@@ -97,8 +97,36 @@ func TestByteConstants(t *testing.T) {
 
 func Example() {
 	b := Byte(10000)
-	fmt.Printf("%f bytes is: %f KB and %f MB\n", b, b.Kilobytes(), b.Megabytes())
+	fmt.Printf("%g bytes is: %g KB and %g MB\n", b, b.Kilobytes(), b.Megabytes())
 
 	// Output:
-	// 10000.000000 bytes is: 10.000000 KB and 0.010000 MB
+	// 10000 bytes is: 10 KB and 0.01 MB
+}
+
+func ExampleByteFormat() {
+	b := Byte(100000)
+	fmt.Println(b.Format("b"))
+	fmt.Println(b.Format("kb"))
+	fmt.Println(b.Format("gb"))
+	fmt.Println(b.Format("tb"))
+	fmt.Println(b.Format("pb"))
+	fmt.Println(b.Format("eb"))
+	fmt.Println(b.Format("kib"))
+	fmt.Println(b.Format("gib"))
+	fmt.Println(b.Format("tib"))
+	fmt.Println(b.Format("pib"))
+	fmt.Println(b.Format("eib"))
+
+	// Output:
+	// 100000B
+	// 100KB
+	// 0.0001GB
+	// 1e-07TB
+	// 1e-10PB
+	// 1e-13EB
+	// 97.65625KiB
+	// 9.313225746154785e-05GiB
+	// 9.094947017729282e-08TiB
+	// 8.881784197001252e-11PiB
+	// 8.673617379884035e-14EiB
 }

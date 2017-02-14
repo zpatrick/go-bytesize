@@ -19,7 +19,7 @@ func TestBytesizeConversions(t *testing.T) {
 		t.Logf("Testing %f", b)
 
 		if r, e := b.Bytes(), float64(b); r != e {
-			t.Errorf("Kilobytes %f: result %f, expected %f", b, r, e)
+			t.Errorf("Bytes %f: result %f, expected %f", b, r, e)
 		}
 
 		if r, e := b.Kilobytes(), float64(b/KB); r != e {

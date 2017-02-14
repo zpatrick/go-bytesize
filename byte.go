@@ -93,7 +93,8 @@ func (b Byte) Exbibytes() float64 {
 
 // Format returns a textual representation of the Byte value formatted
 // according to layout, which defines the format by specifying an abbreviation.
-//
+// Abbreviations are case-insensitive.
+// 
 // Valid abbreviations are as follows:
 //	B (Bytes)
 //	KB (Kilobytes)
@@ -102,14 +103,12 @@ func (b Byte) Exbibytes() float64 {
 //	TB (Terabytes)
 //	PB (Petabytes)
 //	EB (Exabytes)
-//      KiB (Kibibytes)
-//      MiB (Mebibytes)
+//	KiB (Kibibytes)
+//	MiB (Mebibytes)
 //	GiB (Gibibytes)
 //	TiB (Tebibtyes)
 //	PiB (Pebibytes)
 //	EiB (Exbibyte)
-//
-// Abbreviations are case-insensitive.
 func (b Byte) Format(layout string) string {
 	switch layout := strings.ToLower(layout); layout {
 	case "b":

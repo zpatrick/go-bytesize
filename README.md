@@ -24,8 +24,8 @@ func main() {
         b = byte.TB*2
         fmt.Printf("2 Terabytes is %g Gibibytes\n", b.Gibibytes())
 
-	b = byte.Byte(1000000)
-	fmt.Printf("%g bytes is %s\n", b, b.Format("mb"))
+        b = byte.Byte(1000000)
+        fmt.Printf("%g bytes is %s\n", b, b.Format("mb"))
 }
 ```
 

@@ -13,7 +13,7 @@ func init() {
 	rand.Seed(time.Now().Unix())
 }
 
-func TestBytes(t *testing.T) {
+func TestByteConversions(t *testing.T) {
 	for i := 0; i < 1000; i++ {
 		b := Byte(rand.Int63n(MAX_INT64))
 		t.Logf("Testing %f", b)
@@ -68,10 +68,37 @@ func TestBytes(t *testing.T) {
 	}
 }
 
+func TestByteConstants(t *testing.T) {
+	constants := map[Byte]struct {
+		Abbreviation string
+		Expected     Byte
+	}{
+		B:  {"B", 1},
+		KB: {"KB", 1000},
+		MB: {"MB", 1000000},
+		GB: {"GB", 1000000000},
+		TB: {"TB", 1000000000000},
+		PB: {"PB", 1000000000000000},
+		EB: {"EB", 1000000000000000000},
+                KiB: {"KiB", 1024},
+                MiB: {"MiB", 1048576},
+                GiB: {"GiB", 1073741824},
+                TiB: {"TiB", 1099511627776},
+                PiB: {"PiB", 1125899906842624},
+                EiB: {"EiB", 1152921504606846976},
+	}
+
+	for c, s := range constants {
+		if c != s.Expected {
+			t.Errorf("%s: got %f, expected %f", s.Abbreviation, c, s.Expected)
+		}
+	}
+}
+
 func Example() {
 	b := Byte(10000)
-	fmt.Printf("10,000 bytes is: %f KB, %f MB, and %f GB\n", b.Kilobytes(), b.Megabytes(), b.Gigabytes())
+	fmt.Printf("%f bytes is: %f KB and %f MB\n", b, b.Kilobytes(), b.Megabytes())
 
 	// Output:
-	// 10,000 bytes is: 10.000000 KB, 0.010000 MB, and 0.000010 GB
+	// 10000.000000 bytes is: 10.000000 KB and 0.010000 MB
 }

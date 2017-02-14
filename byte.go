@@ -1,26 +1,24 @@
 package byte
 
+// A Byte represents a single byte as a float64
 type Byte float64
 
-// multiples of bytes generally used for computer storage
+// multiples of bytes generally used for computer storage and memory
 const (
 	B  Byte = 1
-	KB Byte = 1000
-	MB Byte = 1000 * 1000
-	GB Byte = 1000 * 1000 * 1000
-	TB Byte = 1000 * 1000 * 1000 * 1000
-	PB Byte = 1000 * 1000 * 1000 * 1000 * 1000
-	EB Byte = 1000 * 1000 * 1000 * 1000 * 1000 * 1000
-)
+	KB Byte = 1000 * B
+	MB Byte = 1000 * KB
+	GB Byte = 1000 * MB
+	TB Byte = 1000 * GB
+	PB Byte = 1000 * TB
+	EB Byte = 1000 * PB
 
-// multiples of bytes generally used for computer memory
-const (
 	KiB Byte = 1024
-	MiB Byte = 1024 * 1024
-	GiB Byte = 1024 * 1024 * 1024
-	TiB Byte = 1024 * 1024 * 1024 * 1024
-	PiB Byte = 1024 * 1024 * 1024 * 1024 * 1024
-	EiB Byte = 1024 * 1024 * 1024 * 1024 * 1024 * 1024
+	MiB Byte = 1024 * KiB
+	GiB Byte = 1024 * MiB
+	TiB Byte = 1024 * GiB
+	PiB Byte = 1024 * TiB
+	EiB Byte = 1024 * PiB
 )
 
 // Bytes returns the number of Bytes (B) in b

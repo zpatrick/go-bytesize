@@ -18,7 +18,7 @@ const (
 	PB Bytesize = 1000 * TB
 	EB Bytesize = 1000 * PB
 
-	KiB Bytesize = 1024
+	KiB Bytesize = 1024 * B
 	MiB Bytesize = 1024 * KiB
 	GiB Bytesize = 1024 * MiB
 	TiB Bytesize = 1024 * GiB

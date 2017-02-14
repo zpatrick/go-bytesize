@@ -18,6 +18,10 @@ func TestBytesizeConversions(t *testing.T) {
 		b := Bytesize(rand.Int63n(MAX_INT64))
 		t.Logf("Testing %f", b)
 
+		if r, e := b.Bytes(), float64(b); r != e {
+			t.Errorf("Kilobytes %f: result %f, expected %f", b, r, e)
+		}
+
 		if r, e := b.Kilobytes(), float64(b/KB); r != e {
 			t.Errorf("Kilobytes %f: result %f, expected %f", b, r, e)
 		}
@@ -69,28 +73,28 @@ func TestBytesizeConversions(t *testing.T) {
 }
 
 func TestBytesizeConstants(t *testing.T) {
-	constants := map[Bytesize]struct {
-		Abbreviation string
-		Expected     Bytesize
+	constants := map[string]struct {
+		Constant Bytesize
+		Expected Bytesize
 	}{
-		B:   {"B", 1},
-		KB:  {"KB", 1000},
-		MB:  {"MB", 1000000},
-		GB:  {"GB", 1000000000},
-		TB:  {"TB", 1000000000000},
-		PB:  {"PB", 1000000000000000},
-		EB:  {"EB", 1000000000000000000},
-		KiB: {"KiB", 1024},
-		MiB: {"MiB", 1048576},
-		GiB: {"GiB", 1073741824},
-		TiB: {"TiB", 1099511627776},
-		PiB: {"PiB", 1125899906842624},
-		EiB: {"EiB", 1152921504606846976},
+		"B":   {B, 1},
+		"KB":  {KB, 1000},
+		"MB":  {MB, 1000000},
+		"GB":  {GB, 1000000000},
+		"TB":  {TB, 1000000000000},
+		"PB":  {PB, 1000000000000000},
+		"EB":  {EB, 1000000000000000000},
+		"KiB": {KiB, 1024},
+		"MiB": {MiB, 1048576},
+		"GiB": {GiB, 1073741824},
+		"TiB": {TiB, 1099511627776},
+		"PiB": {PiB, 1125899906842624},
+		"EiB": {EiB, 1152921504606846976},
 	}
 
-	for b, s := range constants {
-		if b != s.Expected {
-			t.Errorf("%s: result %f, expected %f", s.Abbreviation, b, s.Expected)
+	for abbreviation, s := range constants {
+		if s.Constant != s.Expected {
+			t.Errorf("%s: result %f, expected %f", abbreviation, s.Constant, s.Expected)
 		}
 	}
 }
